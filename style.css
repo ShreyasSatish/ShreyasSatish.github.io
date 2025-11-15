@@ -1,0 +1,124 @@
+.section-header {
+    position: relative;
+    text-align: center;
+    padding-top: 10px; 
+}
+
+.section-header::before,
+.section-header::after {
+    content: ''; 
+    position: absolute;
+    top: 65%; 
+    height: 2px; 
+    width: 40%; 
+    background-color: #6b96e4; /* Your desired color */
+}
+
+.section-header::before {
+    left: 0; 
+}
+
+.section-header::after {
+    right: 0; 
+}
+
+/* --- 2. Skill Cards Styling --- */
+
+/* 1. Container: Use Flexbox to lay out cards side-by-side */
+.skill-cards-container {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 20px; /* Spacing between cards */
+    margin-top: 20px;
+    padding: 10px;
+    justify-content: center;
+}
+
+/* 2. Individual Card Appearance */
+.skill-card {
+    flex: 0 0 calc(50% - 30px); /* Allows cards to grow/shrink, with a minimum width of 200px */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    text-align: center;
+    background-color: var(--secondary-background-color); /* White background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Very subtle initial shadow */
+    
+    /* Ensure smooth visual changes for hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+/* 3. Hover Effect (The Pop-Out and Color Change) */
+.skill-card:hover {
+    /* Pop Out Effect: Move card up slightly */
+    transform: translateY(-5px); 
+    
+    /* Pop Out Effect: Deeper shadow to give a "lifted" appearance */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15); 
+    
+    /* Color Change */
+    background-color: var(--secondary-color); /* Choose a light color (e.g., light green/blue/etc.) */
+    /* #37474F */
+    cursor: pointer;
+}
+
+/* @media (prefers-color-scheme: light) {
+    section#about .skill-card:hover {
+        background-color: var(--primary-color) !important;
+    }
+} */
+
+/* --- Centering Fix: Targeting the list inside the skill card --- */
+
+.skill-card ul {
+    /* 1. FORCE REMOVAL OF DEFAULT LIST INDENTATION (Bootstrap Override) */
+    /* !important is used here to ensure we beat Bootstrap's high specificity */
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+    
+    /* 2. Set up CSS Grid for the two-column layout */
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    
+    /* 3. Center the entire list block horizontally within the card */
+    /* This centers the 'grid' container */
+    margin: 0 auto; 
+    max-width: 90%; 
+    
+    /* 4. Ensure text is still left-aligned within its column cell */
+    text-align: left; 
+}
+
+/* 5. Optional: Add a slight left margin to the text within the 
+      list item (<li>) to separate it from the bullet point, 
+      if the bullets are now flush with the left edge. */
+.skill-card li {
+    margin-left: 50px; 
+    padding-bottom: 1px;
+}
+
+/* --- Project Image Sizing Fix --- */
+
+.card-img-top {
+    /* 1. Set a consistent height for all images */
+    height: 200px;     /* Set your desired height (e.g., 200px) */
+    
+    /* 2. Key to fixing distortion: ensures the image fills the space 
+          without stretching, cropping any excess. */
+    object-fit: cover; 
+    
+    /* 3. Ensure the image takes up the full width of the card */
+    width: 100%;
+    
+    /* Optional: Ensure there are no top/bottom margins being inherited */
+    display: block; 
+}
+
+/* --- Hero Section Gap Reduction --- */
+
+#hero {
+    /* Override high padding from the py-5/py-3 classes */
+    padding-top: 250px !important;  
+    padding-bottom: 200px !important; 
+    /* Adjust '40px' as needed until the spacing looks perfect */
+}
+
